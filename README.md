@@ -24,4 +24,5 @@ More instructions are available https://en.seowphong.com/oss/PigObjFs/
 Catalog description
 
 VB6
+
 This scheme is suitable for VB6, without reference to DLL modFsDeclare.bas , pFile.cls , pFileSystemObject.cls , pFolder.cls , PigLog.cls , pTextStream.cls These 6 files can be added to your VB6 project.
