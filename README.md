@@ -1,6 +1,8 @@
 # PigObjFs
 Piggy Objectified FileSystemObject, It can run directly in different versions of windows.
 
+The functions include file attributes, existence, copy and deletion, folder attributes, existence, file collection and subfolder collection, and text file reading and writing operations.
+
 VB6 compatibility
 
 The EXE file compiled by VB6 can run on almost all windows platforms. Even if it is the new windows 2019, the premise is that DLL is not referenced in VB6 projects.
