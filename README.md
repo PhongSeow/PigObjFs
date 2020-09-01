@@ -28,3 +28,7 @@ Catalog description
 VB6
 
 This scheme is suitable for VB6, without reference to DLL modFsDeclare.bas , pFile.cls , pFileSystemObject.cls , pFolder.cls , PigLog.cls , pTextStream.cls These 6 files can be added to your VB6 project.
+
+VB6DLL
+
+This scheme is suitable for VB6, reference PigObjFsLib.dll The compiled exe can run directly on different versions of windows, but it needs to be registered through regsrv32.exe PigObjFsLib.dll .
