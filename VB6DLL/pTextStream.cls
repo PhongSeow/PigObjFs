@@ -16,9 +16,10 @@ Attribute VB_Exposed = True
 'Author: Seow Phong
 'Organization: Seow Phong Studio(http://en.seowphong.com)
 'Description: objectified TextStream
-'Version: 1.0.2
+'Version: 1.0.3
 'Created: July 19, 2020
 '1.0.2 2020-7-30 add error handling
+'1.0.3 September 1, 2020 Add IsObjReady
 '************************************************
 
 Option Explicit
@@ -111,6 +112,14 @@ ErrOcc:
     mstrLastErr = Err.Description
     On Error GoTo 0
 End Sub
+
+Public Property Get IsObjReady() As Boolean
+    If Me.Obj Is Nothing Then
+        IsObjReady = False
+    Else
+        IsObjReady = True
+    End If
+End Property
 
 
 Private Sub Class_Terminate()

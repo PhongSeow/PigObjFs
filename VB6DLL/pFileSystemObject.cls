@@ -18,22 +18,16 @@ Attribute VB_Ext_KEY = "Top_Level" ,"Yes"
 'Author: Seow Phong
 'Web site: https://en.seowphong.com
 'Description: Objectified file systemobject
-'Version: 1.0.4
+'Version: 1.0.3
 'Created: July 19, 2020
 '1.0.2  August 25, 2020 Add FileExists, FolderExists, CreateFolder
 '1.0.3  August 26, 2020 Optimize the CreateFolder to create subdirectories on nonexistent directories
-'1.0.4  August 31, 2020 Add pIOMode
+'1.0.4 September 1, 2020 Add IsObjReady
 '************************************************
 Option Explicit
 
 Private moFS As Object
 'Private moFS As Scripting.FileSystemObject
-
-Public Enum pIOMode
-    ForAppending = 8
-    ForReading = 1
-    ForWriting = 2
-End Enum
 
 Private Enum xpFilePart
     xpFilePart_Path = 1
@@ -42,6 +36,11 @@ Private Enum xpFilePart
     xpFilePart_DriveNo = 4
 End Enum
 
+Public Enum pIOMode
+    ForAppending = 8
+    ForReading = 1
+    ForWriting = 2
+End Enum
 
 'Log processing-Begin
 Private moPigLog As PigLog
@@ -332,4 +331,12 @@ ErrOcc:
     mGetStr = ""
     On Error GoTo 0
 End Function
+
+Public Property Get IsObjReady() As Boolean
+    If moFS Is Nothing Then
+        IsObjReady = False
+    Else
+        IsObjReady = True
+    End If
+End Property
 

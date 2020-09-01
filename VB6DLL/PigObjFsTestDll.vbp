@@ -1,6 +1,6 @@
 Type=Exe
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
-Reference=*\G{D5C32F69-EDD1-4D0D-874D-CC57DC9385D8}#1.0#0#PigObjFsLib.dll#Piggy Objectified FileSystemObject DLL library
+Reference=*\G{D5C32F69-EDD1-4D0D-874D-CC57DC9385D8}#6.0#0#PigObjFsLib.dll#Piggy Objectified FileSystemObject DLL library
 Form=frmPigObjFs.frm
 Module=modPigObjFs; modPigObjFs.bas
 IconForm="frmPigObjFs"
@@ -15,7 +15,7 @@ Description="Piggy Objectified FileSystemObject test dll"
 CompatibleMode="0"
 MajorVer=1
 MinorVer=0
-RevisionVer=12
+RevisionVer=14
 AutoIncrementVer=1
 ServerSupportFiles=0
 VersionComments="Class usage examples of pigobjfs"
