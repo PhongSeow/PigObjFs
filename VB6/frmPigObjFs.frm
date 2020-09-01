@@ -68,9 +68,6 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Private Sub aaa_Click()
-
-End Sub
 
 Private Sub Form_Load()
     Set goFS = New pFileSystemObject
@@ -116,7 +113,7 @@ End Sub
 
 Private Sub mnupFileSystemObject_CreateFolder_Click()
     Dim strFolderPath As String
-    strFolderPath = InputBox("Enter the Folder path", Me.mnupFileSystemObject_CreateFolder.Caption, "c:\temp")
+    strFolderPath = InputBox("Enter the Folder path", Me.mnupFileSystemObject_CreateFolder.Caption, "c:\temp\a\b\c")
     With Me.txtMain
         goFS.CreateFolder strFolderPath
         .Text = "CreateFolder:" & vbTab
@@ -130,7 +127,7 @@ End Sub
 
 Private Sub mnupFileSystemObject_FileExists_Click()
     Dim strFilePath As String
-    strFilePath = InputBox("Enter the file path", Me.mnupFileSystemObject_FileExists.Caption, App.Path & "\modFsDeclare.bas")
+    strFilePath = InputBox("Enter the file path", Me.mnupFileSystemObject_FileExists.Caption, Me.GetCurrDirFristFile)
     With Me.txtMain
         .Text = "FileExists:" & vbTab & goFS.FileExists(strFilePath) & vbCrLf
     End With
@@ -146,9 +143,9 @@ Private Sub mnupFileSystemObject_FolderExists_Click()
 End Sub
 
 Private Sub mnupFileSystemObject_GetFile_Click()
-    Dim strFilePath As String
-    strFilePath = InputBox("Enter the file path", Me.mnupFileSystemObject_GetFile.Caption, App.Path & "\modFsDeclare.bas")
-    Dim oFile As pFile
+    Dim oFolder As pFolder
+    Dim oFile As pFile, strFilePath As String
+    strFilePath = InputBox("Enter the file path", Me.mnupFileSystemObject_GetFile.Caption, Me.GetCurrDirFristFile)
     Set oFile = goFS.GetFile(strFilePath)
     If oFile.IsObjReady = True Then
         With Me.txtMain
@@ -160,7 +157,25 @@ Private Sub mnupFileSystemObject_GetFile_Click()
     Else
         MsgBox "oFile.IsObjReady = " & oFile.IsObjReady, vbCritical, Me.mnupFileSystemObject_GetFile.Caption
     End If
+    
 End Sub
+
+
+Public Function GetCurrDirFristFile() As String
+    Dim oFolder As pFolder, objFile As Object, oFile As pFile
+    Set oFolder = goFS.GetFolder(App.Path)
+    GetCurrDirFristFile = ""
+    If oFolder.IsObjReady = True Then
+        For Each objFile In oFolder.Files
+            If Not objFile Is Nothing Then
+                Set oFile = New pFile
+                Set oFile.Obj = objFile
+                GetCurrDirFristFile = oFile.Path
+                Exit For
+            End If
+        Next
+    End If
+End Function
 
 Private Sub mnupFileSystemObject_GetFolder_Click()
     Dim strDirPath As String
@@ -182,7 +197,7 @@ End Sub
 
 Private Sub mnupTextStream_ReadFile_Click()
     Dim strFilePath As String, strLine As String
-    strFilePath = InputBox("Input file path", Me.mnupTextStream_ReadFile.Caption, App.Path & "\modFsDeclare.bas")
+    strFilePath = InputBox("Input file path", Me.mnupTextStream_ReadFile.Caption, App.Path & "\README.cmd")
     Dim oTextStream As pTextStream
     Set oTextStream = goFS.OpenTextFile(strFilePath, pIOMode.ForReading, True)
     If goFS.LastErr <> "" Then
