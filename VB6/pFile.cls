@@ -22,6 +22,7 @@ Attribute VB_Ext_KEY = "Top_Level" ,"Yes"
 'Created: July 16, 2020
 '1.0.2 August 10, 2020 Class_ Terminate
 '1.0.3 August 23, 2020 Add sub Delete
+'1.0.4 September 1, 2020 Add IsObjReady
 '************************************************
 
 Option Explicit
@@ -63,8 +64,17 @@ Public Property Get Size() As Long
     Size = Me.Obj.Size
 End Property
 
+Public Property Get IsObjReady() As Boolean
+    If Me.Obj Is Nothing Then
+        IsObjReady = False
+    Else
+        IsObjReady = True
+    End If
+End Property
+
 
 Private Sub Class_Terminate()
     Set Me.Obj = Nothing
 End Sub
+
 

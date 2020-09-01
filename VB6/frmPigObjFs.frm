@@ -150,12 +150,16 @@ Private Sub mnupFileSystemObject_GetFile_Click()
     strFilePath = InputBox("Enter the file path", Me.mnupFileSystemObject_GetFile.Caption, App.Path & "\modFsDeclare.bas")
     Dim oFile As pFile
     Set oFile = goFS.GetFile(strFilePath)
-    With Me.txtMain
-        .Text = "DateCreated:" & vbTab & oFile.DateCreated & vbCrLf
-        .Text = .Text & "DateLastModified:" & vbTab & oFile.DateLastModified & vbCrLf
-        .Text = .Text & "Name:" & vbTab & oFile.Name & vbCrLf
-        .Text = .Text & "Path:" & vbTab & oFile.Path & vbCrLf
-    End With
+    If oFile.IsObjReady = True Then
+        With Me.txtMain
+            .Text = "DateCreated:" & vbTab & oFile.DateCreated & vbCrLf
+            .Text = .Text & "DateLastModified:" & vbTab & oFile.DateLastModified & vbCrLf
+            .Text = .Text & "Name:" & vbTab & oFile.Name & vbCrLf
+            .Text = .Text & "Path:" & vbTab & oFile.Path & vbCrLf
+        End With
+    Else
+        MsgBox "oFile.IsObjReady = " & oFile.IsObjReady, vbCritical, Me.mnupFileSystemObject_GetFile.Caption
+    End If
 End Sub
 
 Private Sub mnupFileSystemObject_GetFolder_Click()
@@ -163,12 +167,17 @@ Private Sub mnupFileSystemObject_GetFolder_Click()
     strDirPath = InputBox("Enter the folder path", Me.mnupFileSystemObject_GetFolder.Caption, App.Path)
     Dim oFolder  As pFolder
     Set oFolder = goFS.GetFolder(strDirPath)
-    With Me.txtMain
-        .Text = "DateCreated:" & vbTab & oFolder.DateCreated & vbCrLf
-        .Text = .Text & "DateLastModified:" & vbTab & oFolder.DateLastModified & vbCrLf
-        .Text = .Text & "Name:" & vbTab & oFolder.Name & vbCrLf
-        .Text = .Text & "IsRootFolder:" & vbTab & oFolder.IsRootFolder & vbCrLf
-    End With
+    If oFolder.IsObjReady = True Then
+        With Me.txtMain
+            .Text = "DateCreated:" & vbTab & oFolder.DateCreated & vbCrLf
+            .Text = .Text & "DateLastModified:" & vbTab & oFolder.DateLastModified & vbCrLf
+            .Text = .Text & "Name:" & vbTab & oFolder.Name & vbCrLf
+            .Text = .Text & "IsRootFolder:" & vbTab & oFolder.IsRootFolder & vbCrLf
+        End With
+    Else
+        MsgBox "oFolder.IsObjReady = " & oFolder.IsObjReady, vbCritical, Me.mnupFileSystemObject_GetFolder.Caption
+    End If
+    
 End Sub
 
 Private Sub mnupTextStream_ReadFile_Click()

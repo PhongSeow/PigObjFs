@@ -16,9 +16,10 @@ Attribute VB_Exposed = False
 'Author: Seow Phong
 'Organization: Seow Phong Studio(http://en.seowphong.com)
 'Description: objectified Folder
-'Version: 1.0.2
+'Version: 1.0.3
 'Created: July 16, 2020
 '1.0.2 2020-7-19 Class_ Terminate
+'1.0.3 September 1, 2020 Add IsObjReady
 '************************************************
 Option Explicit
 
@@ -68,6 +69,14 @@ End Property
 
 Public Property Get SubFolders() As Object
     Set SubFolders = Me.Obj.SubFolders
+End Property
+
+Public Property Get IsObjReady() As Boolean
+    If Me.Obj Is Nothing Then
+        IsObjReady = False
+    Else
+        IsObjReady = True
+    End If
 End Property
 
 

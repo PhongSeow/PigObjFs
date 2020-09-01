@@ -22,6 +22,7 @@ Attribute VB_Ext_KEY = "Top_Level" ,"Yes"
 'Created: July 19, 2020
 '1.0.2  August 25, 2020 Add FileExists, FolderExists, CreateFolder
 '1.0.3  August 26, 2020 Optimize the CreateFolder to create subdirectories on nonexistent directories
+'1.0.4 September 1, 2020 Add IsObjReady
 '************************************************
 Option Explicit
 
@@ -33,6 +34,12 @@ Private Enum xpFilePart
     xpFilePart_FileTitle = 2
     xpFilePart_ExtName = 3
     xpFilePart_DriveNo = 4
+End Enum
+
+Public Enum pIOMode
+    ForAppending = 8
+    ForReading = 1
+    ForWriting = 2
 End Enum
 
 'Log processing-Begin
@@ -324,4 +331,13 @@ ErrOcc:
     mGetStr = ""
     On Error GoTo 0
 End Function
+
+Public Property Get IsObjReady() As Boolean
+    If moFS Is Nothing Then
+        IsObjReady = False
+    Else
+        IsObjReady = True
+    End If
+End Property
+
 
