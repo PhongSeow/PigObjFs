@@ -32,3 +32,9 @@ This scheme is suitable for VB6, without reference to DLL modFsDeclare.bas , pFi
 VB6DLL
 
 This scheme is suitable for VB6, reference PigObjFsLib.dll The compiled exe can run directly on different versions of windows, but it needs to be registered through regsrv32.exe PigObjFsLib.dll .
+
+VB.net
+
+This scheme is applicable to VB.NET , reference PigObjFsLib.dll The compiled exe can run directly on different versions of windows.
+
+
