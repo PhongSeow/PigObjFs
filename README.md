@@ -1,5 +1,5 @@
 # PigObjFs
-Piggy Objectified FileSystemObject, It can run directly in different versions of windows.
+Piggy Objectified FileSystemObject, For programmers who are accustomed to using Microsoft script runtime, the PigObjFsLib.dll In VB6, VB.net And C ා using familiar interfaces, and PigObjFsLib.dll It can run on different versions of windows.
 
 The functions include file attributes, existence, copy and deletion, folder attributes, existence, file collection and subfolder collection, and text file reading and writing operations.
 
