@@ -1,0 +1,9 @@
+SCC = This is a Source Code Control file
+
+[PigObjFsLib.vbp]
+SCC_Aux_Path = "C:\VSS\XycVSS"
+SCC_Project_Name = "$/MyDevXP/PigObj/PigObjFs/ToGitHub/VB6DLL", ZISGAAAA
+
+[PigObjFsTestDll.vbp]
+SCC_Aux_Path = "C:\VSS\XycVSS"
+SCC_Project_Name = "$/MyDevXP/PigObj/PigObjFs/ToGitHub/VB6DLL", ZISGAAAA
