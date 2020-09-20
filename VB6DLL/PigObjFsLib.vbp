@@ -1,5 +1,5 @@
 Type=OleDll
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
 Class=pFileSystemObject; pFileSystemObject.cls
 Class=pFile; pFile.cls
 Class=pFolder; pFolder.cls
@@ -17,7 +17,7 @@ CompatibleMode="1"
 CompatibleEXE32="PigObjFsLib.dll"
 MajorVer=1
 MinorVer=0
-RevisionVer=7
+RevisionVer=8
 AutoIncrementVer=1
 ServerSupportFiles=0
 VersionCompanyName="Seow Phong Studio"
