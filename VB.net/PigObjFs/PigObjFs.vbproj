@@ -118,12 +118,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PigObjFsLib.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="PigObjFsLib">
       <Guid>{D5C32F69-EDD1-4D0D-874D-CC57DC9385D8}</Guid>
-      <VersionMajor>7</VersionMajor>
+      <VersionMajor>8</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
