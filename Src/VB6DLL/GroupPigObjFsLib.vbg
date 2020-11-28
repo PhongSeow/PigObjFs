@@ -1,0 +1,3 @@
+VBGROUP 5.0
+Project=PigObjFsLib.vbp
+StartupProject=PigObjFsTestDll.vbp
