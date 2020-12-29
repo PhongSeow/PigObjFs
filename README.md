@@ -1,40 +1,64 @@
 # PigObjFs
-Piggy Objectified FileSystemObject, For programmers who are accustomed to using Microsoft script runtime, the PigObjFsLib.dll In VB6, VB.net And C# using familiar interfaces, and PigObjFsLib.dll It can run on different versions of windows.
+#### [ÖÐÎÄÎÄµµ](https://github.com/PhongSeow/PigObjFs/blob/master/README.CN.md)
 
-The functions include file attributes, existence, copy and deletion, folder attributes, existence, file collection and subfolder collection, and text file reading and writing operations.
+This is an object-oriented Microsoft script runtime, that is Microsoft script runtime is used by creating object instead of directly referring to VB6 project. In this way, the compiled EXE file can run on different windows platforms.
 
-VB6 compatibility
+There is also a version of .Net 5.0, which can run on Windows and Linux platforms.
 
-The EXE file compiled by VB6 can run on almost all windows platforms. Even if it is the new windows 2019, the premise is that DLL is not referenced in VB6 projects.
+## ***Folders and files description***
 
-Microsoft Script Runtime
+### Setup
 
-This is a component often used in VB6 development. The file name is scrrun.dll In general, windows platform will be pre installed, but different versions of Windows version scrrun.dll It is not binary compatible, so if this component is referenced in VB project, it can not be guaranteed to run on different versions of Windows platform.
+Execute code directory, if you don't want to see the source program, you can use the files in this directory directly in your VB.NET project.
 
-PigObjFs
+##### Setup\VB6
 
-This is a project to objectify Microsoft script runtime, which means to use Microsoft script runtime with CreateObject instead of directly referring to VB project. In this way, the compiled exe files can be run on different windows platforms.
+Add the .cls and .bas files in the directory to your VB6 project, PigObjFs.exe For the compiled sample program.
 
-How to use PigObjFs
+##### Setup\VB6DLL
 
-Will modFsDeclare.bas and pFile.cls , pFileSystemObject.cls , pFolder.cls , PigLog.cls , pTextStream.cls These files can be added to your VB6 project.
+Will PigObjFsLib.dll File reference to your VB6 project can be used, but need to register through regsrv32 command, PigObjFsTestDll.exe For the compiled sample program.
 
-Open PigObjFs.vbp In the frmpigobjfs form, there will be call example code for each class.
+##### Setup\DotNet5.0
 
-More instructions are available https://en.seowphong.com/oss/PigObjFs/
-
-Catalog description
-
-VB6
-
-This scheme is suitable for VB6, without reference to DLL modFsDeclare.bas , pFile.cls , pFileSystemObject.cls , pFolder.cls , PigLog.cls , pTextStream.cls These 6 files can be added to your VB6 project.
-
-VB6DLL
-
-This scheme is suitable for VB6, reference PigObjFsLib.dll The compiled exe can run directly on different versions of windows, but it needs to be registered through regsrv32.exe PigObjFsLib.dll .
-
-VB.net
-
-This scheme is applicable to VB.NET , reference PigObjFsLib.dll The compiled exe can run directly on different versions of windows.
+Add the files in the directory to your. Net project, which can run on Windows, Linux and MacOS platforms.
 
 
+### Src
+
+Source code directory.
+
+#### Src\VB6
+
+VB6 version of the source code and examples.
+
+#### Src\VB6DLL
+
+VB6 Active DLL version of the source code and examples.
+
+#### Src\DotNet5.0
+
+The .net 5.0 version of the source code and console program examples, compiler can run on Windows, Linux and MacOS platform.
+
+## ***Related technical description***
+
+### What is without components
+
+VB's not Objectified approach is to create an ActiveX object through CreateObject, and then use the interface of the class corresponding to the object variable through this object variable, For example:
+
+Set moFS = CreateObject("Scripting.FileSystemObject")¡£
+
+### What are the benefits of without components
+
+The program that can use VB without component has better compatibility. Ideally, the EXE file compiled can run on almost all versions of Windows platform, and there is no need to register components.
+
+Because Windows has a large number of pre installed ActiveX components, these components can be used without registration, but the versions of these components on different versions of Windows platform are not the same, and the complete binary compatibility can not be guaranteed. If you refer to them in VB project and use such as Dim moFS As Scripting.FileSystemObject If ActiveX If the component binary is not compatible, an error will be reported.
+
+But if it is used by creating object, even if the ActiveX component binary is not compatible, as long as the parameters and types of the interface are compatible, it can be used normally. In this way, the compiled VB program has the best compatibility.
+
+
+### How to handle without components
+
+Component free needs to get better compatibility, but what CreateObject gets is an object variable, which is more attribute and method in VB GUI development environment, so the development is not friendly enough.
+
+In order to solve this problem, we can create a "without components" class for the original class, which encapsulates the interface of the original class on the "componentless" class. The specific implementation method can be seen in [https://github.com/PhongSeow/PigObjFs/tree/master/Src/VB6](https://github.com/PhongSeow/PigObjFs/tree/master/Src/VB6).
