@@ -1,5 +1,5 @@
 # PigObjFs
-#### [ÖÐÎÄÎÄµµ](https://github.com/PhongSeow/PigObjFs/blob/master/README.CN.md)
+#### [ä¸­æ–‡æ–‡æ¡£](https://github.com/PhongSeow/PigObjFs/blob/master/README.CN.md)
 
 This is an object-oriented Microsoft script runtime, that is Microsoft script runtime is used by creating object instead of directly referring to VB6 project. In this way, the compiled EXE file can run on different windows platforms.
 
@@ -46,7 +46,7 @@ The .net 5.0 version of the source code and console program examples, compiler c
 
 VB's not Objectified approach is to create an ActiveX object through CreateObject, and then use the interface of the class corresponding to the object variable through this object variable, For example:
 
-Set moFS = CreateObject("Scripting.FileSystemObject")¡£
+Set moFS = CreateObject("Scripting.FileSystemObject")ã€‚
 
 ### What are the benefits of without components
 
