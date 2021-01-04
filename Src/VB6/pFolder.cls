@@ -18,8 +18,9 @@ Attribute VB_Exposed = False
 'Description: objectified Folder
 'Version: 1.0.3
 'Created: July 16, 2020
-'1.0.2 2020-7-19 Class_ Terminate
-'1.0.3 September 1, 2020 Add IsObjReady
+'1.0.2 19/7/2020 Class_ Terminate
+'1.0.3 1/9/2020 Add IsObjReady
+'1.0.4 3/1/2021 Add GetSubFolderList
 '************************************************
 Option Explicit
 
@@ -54,6 +55,24 @@ End Property
 Public Property Get Size() As Long
     Size = Me.Obj.Size
 End Property
+
+Public Function GetSubFolderList() As String
+    
+End Function
+
+Private Sub mGetSubFolderList(oFolder As Object, SubFolderList, Ret As String)
+    On Error GoTo ErrOcc:
+    If oFolder.SubFolders.Count = 0 Then
+        SubFolderList = SubFolderList & oFolder.Path & vbCrLf
+    Else
+        Dim oSubFolder As Object
+        For Each oSubFolder In oFolder.SubFolders
+            
+        Next
+        
+    End If
+    
+End Sub
 
 Public Property Get Files() As Object
     Set Files = Me.Obj.Files
