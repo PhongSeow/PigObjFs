@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="PigObjFsLib" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="PigObjFsLib">
       <HintPath>..\..\PigObjFsLib\PigObjFsLib\bin\Debug\net5.0\PigObjFsLib.dll</HintPath>
     </Reference>
