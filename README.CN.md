@@ -18,9 +18,10 @@
 将 PigObjFsLib.dll 文件引用到您的 VB6 工程就可以使用，但需要通过 regsrv32 命令注册，PigObjFsTestDll.exe 为编译后的示例程序。
 
 
-##### Setup\DotNet5.0
+##### Setup\DotNet
 
-将目录中的类文件添加到您的 .net 工程就可以使用，可以运行在 Windows、Linux 和 MacOS 平台。
+支持多种不同的 .net 框架，将目录中的类文件添加到您的 .net 工程就可以使用，可以运行在 Windows、Linux 和 MacOS 平台。
+建议使用 NuGet 部署，见 [https://www.nuget.org/packages/PigObjFsLib/](https://www.nuget.org/packages/PigObjFsLib/)
 
 
 ### Src
@@ -38,6 +39,10 @@ VB6 Active DLL 版本的源码和示例。
 #### Src\DotNet5.0
 
 .net 5.0 版本的源码和控制台程序示例，编译程序可以运行在 Windows、Linux 和 MacOS 平台。
+
+#### Src\DotNet
+
+支持多框架 .net 版本的源码，编译程序可以运行在 Windows、Linux 和 MacOS 平台。
 
 ## ***相关技术说明***
 

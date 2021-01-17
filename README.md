@@ -19,10 +19,10 @@ Add the .cls and .bas files in the directory to your VB6 project, PigObjFs.exe F
 
 Will PigObjFsLib.dll File reference to your VB6 project can be used, but need to register through regsrv32 command, PigObjFsTestDll.exe For the compiled sample program.
 
-##### Setup\DotNet5.0
+##### Setup\DotNet
 
-Add the files in the directory to your. Net project, which can run on Windows, Linux and MacOS platforms.
-
+Support multiple .net frameworks, add the files in the directory to your. Net project, which can run on Windows, Linux and MacOS platforms.
+Nuget deployment is recommended. See[https://www.nuget.org/packages/PigObjFsLib/](https://www.nuget.org/packages/PigObjFsLib/).
 
 ### Src
 
@@ -39,6 +39,10 @@ VB6 Active DLL version of the source code and examples.
 #### Src\DotNet5.0
 
 The .net 5.0 version of the source code and console program examples, compiler can run on Windows, Linux and MacOS platform.
+
+#### Src\DotNet
+
+Support multi framework. Net version of the source code, compiler can run on Windows, Linux and MacOS platform.
 
 ## ***Related technical description***
 

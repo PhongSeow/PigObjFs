@@ -42,7 +42,7 @@ Public Class PigBaseMini
     Public Sub New(Version As String)
         mstrClsName = Me.GetType.Name.ToString()
         mstrClsVersion = Version
-#If net451 = True Then
+#If net45 Or net40 Then
         mbolIsWindows = True 
 #Else
         mbolIsWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)

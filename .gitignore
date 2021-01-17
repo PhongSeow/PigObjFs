@@ -7,6 +7,9 @@
 vssver.scc
 mssccprj.scc
 
+# BAK
+*.bak
+
 # User-specific files
 *.rsuser
 *.suo
