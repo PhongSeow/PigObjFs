@@ -4,8 +4,9 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.FileSystemObject of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.1
+'* Version: 1.0.2
 '* Create Time: 31/12/2020
+'* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
 '**********************************
 Imports System.IO
 Public Class pFileSystemObject
@@ -95,7 +96,7 @@ Public Class pFileSystemObject
         Try
             OpenTextFile = New pTextStream
             OpenTextFile.Init(FilePath, IOMode, Create)
-            If OpenTextFile.LastErr <> "" Then Err.Raise(-1,, OpenTextFile.LastErr)
+            If OpenTextFile.LastErr <> "" Then Throw New Exception(OpenTextFile.LastErr)
         Catch ex As Exception
             Me.SetSubErrInf("OpenTextFile", ex)
             Return Nothing

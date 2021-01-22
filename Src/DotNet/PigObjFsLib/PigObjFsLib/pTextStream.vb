@@ -4,8 +4,9 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.TextStream of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.1
+'* Version: 1.0.2
 '* Create Time: 30/12/2020
+'* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
 '**********************************
 Imports System.IO
 Public Class pTextStream
@@ -38,7 +39,7 @@ Public Class pTextStream
                 Case pFileSystemObject.pIOMode.ForAppending
                     swMain = New StreamWriter(FilePath, False)
                 Case Else
-                        Err.Raise(-1,, "Invalid IOMode " & IOMode.ToString)
+                    Throw New Exception("Invalid IOMode " & IOMode.ToString)
             End Select
             Me.ClearErr()
         Catch ex As Exception

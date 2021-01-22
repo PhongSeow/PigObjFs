@@ -5,44 +5,39 @@
 
 ## ***目录和文件描述***
 
-### Setup
+### Release
 
-执行码目录，如果你不想看到源程序，你可以直接使用这个目录中的文件。
+发布执行码目录，如果你不想看到源程序，你可以直接使用这个目录中的文件。
 
-##### Setup\VB6
+##### Release\DotNet
+
+将目录中的类文件添加到您的 .net 工程或使用 NuGet ，可以运行在 Windows、Linux 和 MacOS 平台。
+
+##### Release\VB6
 
 将目录中的 .cls 和 .bas 文件添加到您的 VB6 工程就可以使用，PigObjFs.exe 为编译后的示例程序。
-
-##### Setup\VB6DLL
-
-将 PigObjFsLib.dll 文件引用到您的 VB6 工程就可以使用，但需要通过 regsrv32 命令注册，PigObjFsTestDll.exe 为编译后的示例程序。
-
-
-##### Setup\DotNet
-
-支持多种不同的 .net 框架，将目录中的类文件添加到您的 .net 工程就可以使用，可以运行在 Windows、Linux 和 MacOS 平台。
-建议使用 NuGet 部署，见 [https://www.nuget.org/packages/PigObjFsLib/](https://www.nuget.org/packages/PigObjFsLib/)
 
 
 ### Src
 
 源码目录。
 
+#### Src\DotNet
+
+支持多种 .net 框架的源码和控制台程序示例，编译程序可以运行在 Windows、Linux 和 MacOS 平台。
+
+#### Src\DotNet\PigObjFsLib
+
+类库目录
+
+#### Src\DotNet\PigObjFsDemo
+
+调用示例目录
+
 #### Src\VB6
 
 VB6版本的源码和示例。
 
-#### Src\VB6DLL
-
-VB6 Active DLL 版本的源码和示例。
-
-#### Src\DotNet5.0
-
-.net 5.0 版本的源码和控制台程序示例，编译程序可以运行在 Windows、Linux 和 MacOS 平台。
-
-#### Src\DotNet
-
-支持多框架 .net 版本的源码，编译程序可以运行在 Windows、Linux 和 MacOS 平台。
 
 ## ***相关技术说明***
 

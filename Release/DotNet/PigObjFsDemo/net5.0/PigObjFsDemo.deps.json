@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "PigObjFsDemo/1.0.0": {
+        "dependencies": {
+          "PigObjFsLib": "1.1.0"
+        },
+        "runtime": {
+          "PigObjFsDemo.dll": {}
+        }
+      },
+      "PigObjFsLib/1.1.0": {
+        "runtime": {
+          "lib/net5.0/PigObjFsLib.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PigObjFsDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PigObjFsLib/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QcbisirhPgUB3szNT5avs1kQUTA+dn5ZjCU1kF+4eP5no9j/XIpxY4xT/7EooT6izeG/TlyYDo9Ve8b4o97Z7g==",
+      "path": "pigobjfslib/1.1.0",
+      "hashPath": "pigobjfslib.1.1.0.nupkg.sha512"
+    }
+  }
+}

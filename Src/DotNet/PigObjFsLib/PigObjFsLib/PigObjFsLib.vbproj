@@ -2,21 +2,21 @@
 
   <PropertyGroup>
     <RootNamespace>PigObjFsLib</RootNamespace>
-    <TargetFrameworks>net5.0;net45;net40;netcoreapp3.1;</TargetFrameworks>
+	  <TargetFrameworks>net45;net40;net5.0;netcoreapp3.1;netstandard2.0;</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <Authors>Seow Phong</Authors>
     <Company>Seow Phong Studio</Company>
-    <Description>Interface similar to Microsoft Scripting Runtime of VB6.</Description>
+    <Description>A library that can support multiple .net frameworks, and its interface is similar to Microsoft Scripting Runtime of VB6,easy to upgrade VB6 code to VB.NET.</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://en.seowphong.com/oss/PigObjFs/</PackageProjectUrl>
-    <PackageReleaseNotes>An interface that can be used under .net 5.0 is similar to the class library of Microsoft Scripting Runtime of VB6.</PackageReleaseNotes>
+    <PackageReleaseNotes>Add support for netstandard 2.0</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/PhongSeow/PigObjFs</RepositoryUrl>
     <PackageTags>Microsoft Scripting Runtime</PackageTags>
     <NeutralLanguage />
-    <Copyright>Copyright (c) 2020 Seow Phong</Copyright>
-    <Version>1.0.1</Version>
+    <Copyright>Copyright (c) 2020-2021 Seow Phong</Copyright>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +24,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="My Project\" />
   </ItemGroup>
 
 </Project>

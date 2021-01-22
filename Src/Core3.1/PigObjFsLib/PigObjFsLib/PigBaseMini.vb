@@ -4,7 +4,7 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Basic lightweight Edition
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.15
+'* Version: 1.0.16
 '* Create Time: 31/8/2019
 '*1.0.2  1/10/2019   Add mGetSubErrInf 
 '*1.0.3  4/11/2019   Add LastErr
@@ -20,6 +20,7 @@
 '*1.0.13 8/12/2020  Modify ClearErr
 '*1.0.14 27/12/2020 Add IsWindows,
 '*1.0.15 4/1/2021   Modify New
+'*1.0.16 15/1/2021   Modify New
 '************************************
 Imports System.Runtime.InteropServices
 Public Class PigBaseMini

@@ -7,42 +7,39 @@ There is also a version of .Net 5.0, which can run on Windows and Linux platform
 
 ## ***Folders and files description***
 
-### Setup
+### Release
 
-Execute code directory, if you don't want to see the source program, you can use the files in this directory directly in your VB.NET project.
+Release execute code directory, if you don't want to see the source program, you can use the files in this directory directly in your VB.NET project.
 
-##### Setup\VB6
+##### Release\DotNet
+
+Add the files in the directory to your. Net project or use NuGet, which can run on Windows, Linux and MacOS platforms.
+
+##### Release\VB6
 
 Add the .cls and .bas files in the directory to your VB6 project, PigObjFs.exe For the compiled sample program.
 
-##### Setup\VB6DLL
-
-Will PigObjFsLib.dll File reference to your VB6 project can be used, but need to register through regsrv32 command, PigObjFsTestDll.exe For the compiled sample program.
-
-##### Setup\DotNet
-
-Support multiple .net frameworks, add the files in the directory to your. Net project, which can run on Windows, Linux and MacOS platforms.
-Nuget deployment is recommended. See[https://www.nuget.org/packages/PigObjFsLib/](https://www.nuget.org/packages/PigObjFsLib/).
 
 ### Src
 
 Source code directory.
 
+#### Src\DotNet
+
+Support multiple .net frameworks of the source code and console program examples, compiler can run on Windows, Linux and MacOS platform.
+
+#### Src\DotNet\PigObjFsLib
+
+Library Directory
+
+#### Src\DotNet\PigObjFsDemo
+
+Sample directory
+
 #### Src\VB6
 
 VB6 version of the source code and examples.
 
-#### Src\VB6DLL
-
-VB6 Active DLL version of the source code and examples.
-
-#### Src\DotNet5.0
-
-The .net 5.0 version of the source code and console program examples, compiler can run on Windows, Linux and MacOS platform.
-
-#### Src\DotNet
-
-Support multi framework. Net version of the source code, compiler can run on Windows, Linux and MacOS platform.
 
 ## ***Related technical description***
 

@@ -4,7 +4,7 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Basic lightweight Edition
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.15
+'* Version: 1.0.17
 '* Create Time: 31/8/2019
 '*1.0.2  1/10/2019   Add mGetSubErrInf 
 '*1.0.3  4/11/2019   Add LastErr
@@ -20,6 +20,8 @@
 '*1.0.13 8/12/2020  Modify ClearErr
 '*1.0.14 27/12/2020 Add IsWindows,
 '*1.0.15 4/1/2021   Modify New
+'*1.0.16 15/1/2021   Modify New
+'*1.0.17 15/1/2021   Err.Raise change to Throw New Exception
 '************************************
 Imports System.Runtime.InteropServices
 Public Class PigBaseMini
@@ -42,9 +44,9 @@ Public Class PigBaseMini
     Public Sub New(Version As String)
         mstrClsName = Me.GetType.Name.ToString()
         mstrClsVersion = Version
-#If net45 Or net40 Then
-        mbolIsWindows = True 
-#Else
+#If NET45 Or net40 Then
+        mbolIsWindows = True
+#ElseIf net50 Or netcoreapp31 Then
         mbolIsWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
 #End If
         If mbolIsWindows = True Then
@@ -98,11 +100,12 @@ Public Class PigBaseMini
     ''' <summary>调试</summary>
     Private Function mPrintDebugLog(StepName As String, LogInf As String, IsHardDebug As Boolean) As String
         Try
-            If IsHardDebug = True And mbolIsHardDebug = False Then Err.Raise(-1, , "Only hard debug mode can print logs")
-            If mbolIsDebug = False Then Err.Raise(-1, , "Only debug mode can print logs")
+            If IsHardDebug = True And mbolIsHardDebug = False Then Throw New Exception("Only hard debug mode can print logs")
+            If mbolIsDebug = False Then Throw New Exception("Only debug mode can print logs")
             Dim sfAny As New System.IO.FileStream(Me.mstrDebugFilePath, System.IO.FileMode.Append, System.IO.FileAccess.Write, System.IO.FileShare.Write, 10240, False)
             Dim swAny = New System.IO.StreamWriter(sfAny)
-            LogInf = "[" & Format(Now, "yyyy-MM-dd HH:mm:ss.fff") & "][" & System.Diagnostics.Process.GetCurrentProcess.Id.ToString & "." & System.Threading.Thread.CurrentThread.ManagedThreadId.ToString & "]" & LogInf
+            Dim dtNow As System.DateTime = System.DateTime.Now
+            LogInf = "[" & dtNow.ToString("yyyy-MM-dd HH:mm:ss.fff") & "][" & System.Diagnostics.Process.GetCurrentProcess.Id.ToString & "." & System.Threading.Thread.CurrentThread.ManagedThreadId.ToString & "]" & LogInf
             If StepName <> "" Then LogInf &= "(" & StepName & ")"
             swAny.WriteLine(LogInf)
             swAny.Close()
@@ -177,12 +180,13 @@ Public Class PigBaseMini
         Try
             Dim sbAny As New System.Text.StringBuilder("")
             sbAny.Append(Me.FullSubName(SubName))
-            If Len(StepName) > 0 Then
+
+            If StepName.Length > 0 Then
                 sbAny.Append("(")
                 sbAny.Append(StepName)
                 sbAny.Append(")")
             End If
-            If Len(Me.KeyInf) > 0 Then sbAny.Append(";Key:" & Me.KeyInf)
+            If Me.KeyInf.Length > 0 Then sbAny.Append(";Key:" & Me.KeyInf)
             sbAny.Append(";ErrInf:")
             sbAny.Append(exIn.Message)
             If IsStackTrace = True Then
@@ -242,12 +246,12 @@ Public Class PigBaseMini
         Try
             Dim sbAny As New System.Text.StringBuilder("")
             sbAny.Append(Me.FullSubName(SubName))
-            If Len(StepName) > 0 Then
+            If StepName.Length > 0 Then
                 sbAny.Append("(")
                 sbAny.Append(StepName)
                 sbAny.Append(")")
             End If
-            If Len(Me.KeyInf) > 0 Then sbAny.Append(";Key:" & Me.KeyInf)
+            If Me.KeyInf.Length > 0 Then sbAny.Append(";Key:" & Me.KeyInf)
             sbAny.Append(";Debug:")
             sbAny.Append(DebugInf)
             Return sbAny.ToString
