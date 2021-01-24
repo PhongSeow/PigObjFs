@@ -4,14 +4,15 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.FileSystemObject of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.2
+'* Version: 1.0.3
 '* Create Time: 31/12/2020
 '* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
+'* 1.0.3 23/1/2021   pFileSystemObject rename to FileSystemObject
 '**********************************
 Imports System.IO
-Public Class pFileSystemObject
+Public Class FileSystemObject
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.0.1"
+    Private Const CLS_VERSION As String = "1.0.3"
 
     Public Enum pIOMode
         ForAppending = 8
@@ -26,7 +27,7 @@ Public Class pFileSystemObject
 
     Public Sub MoveFile(Source As String, Destination As String, Optional OverWriteFiles As Boolean = True)
         Try
-            File.Move(Source, Destination)
+            IO.File.Move(Source, Destination)
         Catch ex As Exception
             Me.SetSubErrInf("MoveFile", ex)
         End Try
@@ -34,15 +35,15 @@ Public Class pFileSystemObject
 
     Public Sub CopyFile(Source As String, Destination As String, Optional OverWriteFiles As Boolean = True)
         Try
-            File.Copy(Source, Destination, OverWriteFiles)
+            IO.File.Copy(Source, Destination, OverWriteFiles)
         Catch ex As Exception
             Me.SetSubErrInf("CopyFile", ex)
         End Try
     End Sub
 
-    Public Function CreateFolder(Path As String) As pFolder
+    Public Function CreateFolder(Path As String) As Folder
         Try
-            CreateFolder = New pFolder
+            CreateFolder = New Folder
             CreateFolder.Obj = Directory.CreateDirectory(Path)
         Catch ex As Exception
             Me.SetSubErrInf("CreateFolder", ex)
@@ -53,7 +54,7 @@ Public Class pFileSystemObject
     Public ReadOnly Property FileExists(FileSpec As String) As Boolean
         Get
             Try
-                Return File.Exists(FileSpec)
+                Return IO.File.Exists(FileSpec)
             Catch ex As Exception
                 Me.SetSubErrInf("FileExists", ex)
                 Return Nothing
@@ -72,9 +73,9 @@ Public Class pFileSystemObject
         End Get
     End Property
 
-    Public Function GetFile(FilePath As String) As pFile
+    Public Function GetFile(FilePath As String) As File
         Try
-            Dim oFile As New pFile With {.Obj = New FileInfo(FilePath)}
+            Dim oFile As New File With {.Obj = New FileInfo(FilePath)}
             Return oFile
         Catch ex As Exception
             Me.SetSubErrInf("GetFile", ex)
@@ -82,9 +83,9 @@ Public Class pFileSystemObject
         End Try
     End Function
 
-    Public Function GetFolder(FolderPath As String) As pFolder
+    Public Function GetFolder(FolderPath As String) As Folder
         Try
-            Dim oFolder As New pFolder With {.Obj = New DirectoryInfo(FolderPath)}
+            Dim oFolder As New Folder With {.Obj = New DirectoryInfo(FolderPath)}
             Return oFolder
         Catch ex As Exception
             Me.SetSubErrInf("GetFolder", ex)
@@ -92,9 +93,9 @@ Public Class pFileSystemObject
         End Try
     End Function
 
-    Public Function OpenTextFile(FilePath As String, IOMode As pIOMode, Optional Create As Boolean = False) As pTextStream
+    Public Function OpenTextFile(FilePath As String, IOMode As pIOMode, Optional Create As Boolean = False) As TextStream
         Try
-            OpenTextFile = New pTextStream
+            OpenTextFile = New TextStream
             OpenTextFile.Init(FilePath, IOMode, Create)
             If OpenTextFile.LastErr <> "" Then Throw New Exception(OpenTextFile.LastErr)
         Catch ex As Exception

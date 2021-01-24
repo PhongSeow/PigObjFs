@@ -1,16 +1,17 @@
 ﻿'**********************************
-'* Name: pFolder
+'* Name: Folder
 '* Author: Seow Phong
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.Folder of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.1
+'* Version: 1.0.2
 '* Create Time: 31/12/2020
+'* 1.0.2 23/1/2021   pFolder rename to Folder
 '**********************************
 Imports System.IO
-Public Class pFolder
+Public Class Folder
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.0.1"
+    Private Const CLS_VERSION As String = "1.0.2"
 
     Public Obj As DirectoryInfo
 
@@ -105,13 +106,13 @@ Public Class pFolder
         End Get
     End Property
 
-    Public ReadOnly Property Files() As pFile()
+    Public ReadOnly Property Files() As File()
         Get
             Try
-                Dim aFile() As pFile
+                Dim aFile() As File
                 ReDim aFile(-1)
                 For Each oFileInfo In Me.Obj.GetFiles
-                    Dim oFile = New pFile With {.Obj = oFileInfo}
+                    Dim oFile = New File With {.Obj = oFileInfo}
                     ReDim Preserve aFile(aFile.LongLength)
                     aFile(aFile.LongLength - 1) = oFile
                 Next
@@ -123,10 +124,10 @@ Public Class pFolder
         End Get
     End Property
 
-    Public ReadOnly Property ParentFolder() As pFolder
+    Public ReadOnly Property ParentFolder() As Folder
         Get
             Try
-                Dim oFolder As New pFolder With {.Obj = Me.Obj.Parent}
+                Dim oFolder As New Folder With {.Obj = Me.Obj.Parent}
                 Return oFolder
             Catch ex As Exception
                 Me.SetSubErrInf("ParentFolder", ex)
@@ -150,14 +151,14 @@ Public Class pFolder
         End Get
     End Property
 
-    Public ReadOnly Property mSubFolders() As pFolder()
+    Public ReadOnly Property mSubFolders() As Folder()
         Get
             Try
-                Dim aFolder() As pFolder
+                Dim aFolder() As Folder
                 ReDim aFolder(-1)
                 For Each oDirectoryInfo In Me.Obj.GetDirectories
                     ReDim Preserve aFolder(aFolder.LongLength)
-                    Dim oFolder As New pFolder With {.Obj = oDirectoryInfo}
+                    Dim oFolder As New Folder With {.Obj = oDirectoryInfo}
                     aFolder(aFolder.LongLength - 1) = oFolder
                 Next
                 Return aFolder
@@ -169,24 +170,24 @@ Public Class pFolder
     End Property
 
 
-    Public ReadOnly Property SubFolders() As pFolder()
+    Public ReadOnly Property SubFolders() As Folder()
         Get
             Return Me.mSubFolders
         End Get
     End Property
 
-    Public ReadOnly Property SubFolders(IsIncSub As Boolean) As pFolder()
+    Public ReadOnly Property SubFolders(IsIncSub As Boolean) As Folder()
         Get
             Try
                 If IsIncSub = True Then
                     Dim strRet As String = "", saDir(-1) As String
                     Me.mGetSubDirList(Me.Obj, saDir, strRet)
-                    Dim aFolder() As pFolder
+                    Dim aFolder() As Folder
                     ReDim aFolder(-1)
                     For i = 0 To saDir.LongLength - 1
                         Dim oDir As New DirectoryInfo(saDir(i))
                         ReDim Preserve aFolder(aFolder.LongLength)
-                        Dim oFolder As New pFolder With {.Obj = oDir}
+                        Dim oFolder As New Folder With {.Obj = oDir}
                         aFolder(aFolder.LongLength - 1) = oFolder
                     Next
                     Return aFolder

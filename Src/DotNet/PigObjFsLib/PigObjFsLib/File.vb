@@ -1,5 +1,5 @@
 '**********************************
-'* Name: pFile
+'* Name: File
 '* Author: Seow Phong
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.File of VB6
@@ -7,11 +7,12 @@
 '* Version: 1.0.2
 '* Create Time: 30/12/2020
 '* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
+'* 1.0.3 23/1/2021   pFile rename to File
 '**********************************
 Imports System.IO
-Public Class pFile
+Public Class File
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.0.1"
+    Private Const CLS_VERSION As String = "1.0.3"
 
     Public Obj As FileInfo
 

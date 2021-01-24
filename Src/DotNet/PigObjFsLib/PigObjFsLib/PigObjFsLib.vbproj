@@ -9,18 +9,23 @@
     <Description>A library that can support multiple .net frameworks, and its interface is similar to Microsoft Scripting Runtime of VB6,easy to upgrade VB6 code to VB.NET.</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://en.seowphong.com/oss/PigObjFs/</PackageProjectUrl>
-    <PackageReleaseNotes>Add support for netstandard 2.0</PackageReleaseNotes>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>Rename the class name, upgrade from VB6 to VB.NET More easily.</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/PhongSeow/PigObjFs</RepositoryUrl>
-    <PackageTags>Microsoft Scripting Runtime</PackageTags>
+    <PackageTags>Microsoft Scripting Runtime VB6 To VB.net library File FileSystemObject Folder TextStream</PackageTags>
     <NeutralLanguage />
     <Copyright>Copyright (c) 2020-2021 Seow Phong</Copyright>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
+    <PackageIcon>SeowPhongLogo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\..\..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="SeowPhongLogo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

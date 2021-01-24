@@ -1,5 +1,5 @@
 ﻿'**********************************
-'* Name: pTextStream
+'* Name: TextStream
 '* Author: Seow Phong
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.TextStream of VB6
@@ -7,13 +7,14 @@
 '* Version: 1.0.2
 '* Create Time: 30/12/2020
 '* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
+'* 1.0.3 23/1/2021   pTextStream rename to TextStream
 '**********************************
 Imports System.IO
-Public Class pTextStream
+Public Class TextStream
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.0.1"
+    Private Const CLS_VERSION As String = "1.0.3"
 
-    Private menmIOMode As pFileSystemObject.pIOMode
+    Private menmIOMode As FileSystemObject.pIOMode
 
     Private srMain As StreamReader
     Private swMain As StreamWriter
@@ -22,21 +23,21 @@ Public Class pTextStream
         MyBase.New(CLS_VERSION)
     End Sub
 
-    Friend Sub Init(FilePath As String, IOMode As pFileSystemObject.pIOMode, Optional Create As Boolean = False)
+    Friend Sub Init(FilePath As String, IOMode As FileSystemObject.pIOMode, Optional Create As Boolean = False)
         Try
             menmIOMode = IOMode
             Select Case menmIOMode
-                Case pFileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.pIOMode.ForReading
                     If Create = True Then
-                        If File.Exists(FilePath) = False Then
+                        If IO.File.Exists(FilePath) = False Then
                             swMain = New StreamWriter(FilePath)
                             swMain.Close()
                         End If
                     End If
                     srMain = New StreamReader(FilePath)
-                Case pFileSystemObject.pIOMode.ForWriting
+                Case FileSystemObject.pIOMode.ForWriting
                     swMain = New StreamWriter(FilePath, True)
-                Case pFileSystemObject.pIOMode.ForAppending
+                Case FileSystemObject.pIOMode.ForAppending
                     swMain = New StreamWriter(FilePath, False)
                 Case Else
                     Throw New Exception("Invalid IOMode " & IOMode.ToString)
@@ -51,7 +52,7 @@ Public Class pTextStream
         Get
             Try
                 Select Case menmIOMode
-                    Case pFileSystemObject.pIOMode.ForReading
+                    Case FileSystemObject.pIOMode.ForReading
                         Return srMain.EndOfStream
                     Case Else
                         Return Nothing
@@ -66,7 +67,7 @@ Public Class pTextStream
     Public Sub Close()
         Try
             Select Case menmIOMode
-                Case pFileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.pIOMode.ForReading
                     srMain.Close()
                 Case Else
                     swMain.Close()
@@ -80,7 +81,7 @@ Public Class pTextStream
     Public Function ReadAll() As String
         Try
             Select Case menmIOMode
-                Case pFileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.pIOMode.ForReading
                     Return srMain.ReadToEnd()
                 Case Else
                     Return ""
@@ -95,7 +96,7 @@ Public Class pTextStream
     Public Function ReadLine() As String
         Try
             Select Case menmIOMode
-                Case pFileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.pIOMode.ForReading
                     Return srMain.ReadLine
                 Case Else
                     Return ""
@@ -111,7 +112,7 @@ Public Class pTextStream
     Public Sub WriteLine(Text As String)
         Try
             Select Case menmIOMode
-                Case pFileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.pIOMode.ForReading
                 Case Else
                     swMain.WriteLine(Text)
             End Select
@@ -129,7 +130,7 @@ Public Class pTextStream
     Public Sub Write(Text As String)
         Try
             Select Case menmIOMode
-                Case pFileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.pIOMode.ForReading
                 Case Else
                     swMain.Write(Text)
             End Select
