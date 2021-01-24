@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PigObjFsDemoConsole</RootNamespace>
+    <TargetFrameworks>net45;net40;net5.0;netcoreapp3.1;netstandard2.0;</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Seow Phong</Authors>
+    <Company>Seow Phong Studio</Company>
+    <Product>PigObjFs Demo Console</Product>
+    <Copyright>Copyright (c) 2021 Seow Phong</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://en.seowphong.com/oss/PigObjFs/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/PhongSeow/PigObjFs</RepositoryUrl>
+    <PackageTags>Microsoft Scripting Runtime PigObjFsLib VB6 VB.net library File FileSystemObject Folder TextStream</PackageTags>
+    <Description>Demo program for PigObjFsLib</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PigObjFsLib" Version="1.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
