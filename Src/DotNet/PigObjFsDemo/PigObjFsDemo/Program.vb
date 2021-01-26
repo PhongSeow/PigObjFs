@@ -2,7 +2,10 @@ Imports System
 Imports PigObjFsLib
 Module Program
     Public goFS As New pFileSystemObject
+
+
     Sub Main(args As String())
+
         Do While True
             Console.WriteLine("*******************")
             Console.WriteLine("Main menu")

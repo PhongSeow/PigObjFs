@@ -14,7 +14,9 @@ Public Class FileSystemObject
     Inherits PigBaseMini
     Private Const CLS_VERSION As String = "1.0.3"
 
-    Public Enum pIOMode
+    Private Shadows AppTitle As String
+
+    Public Enum IOMode
         ForAppending = 8
         ForReading = 1
         ForWriting = 2
@@ -93,7 +95,7 @@ Public Class FileSystemObject
         End Try
     End Function
 
-    Public Function OpenTextFile(FilePath As String, IOMode As pIOMode, Optional Create As Boolean = False) As TextStream
+    Public Function OpenTextFile(FilePath As String, IOMode As IOMode, Optional Create As Boolean = False) As TextStream
         Try
             OpenTextFile = New TextStream
             OpenTextFile.Init(FilePath, IOMode, Create)

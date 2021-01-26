@@ -14,7 +14,7 @@ Public Class TextStream
     Inherits PigBaseMini
     Private Const CLS_VERSION As String = "1.0.3"
 
-    Private menmIOMode As FileSystemObject.pIOMode
+    Private menmIOMode As FileSystemObject.IOMode
 
     Private srMain As StreamReader
     Private swMain As StreamWriter
@@ -23,11 +23,11 @@ Public Class TextStream
         MyBase.New(CLS_VERSION)
     End Sub
 
-    Friend Sub Init(FilePath As String, IOMode As FileSystemObject.pIOMode, Optional Create As Boolean = False)
+    Friend Sub Init(FilePath As String, IOMode As FileSystemObject.IOMode, Optional Create As Boolean = False)
         Try
             menmIOMode = IOMode
             Select Case menmIOMode
-                Case FileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.IOMode.ForReading
                     If Create = True Then
                         If IO.File.Exists(FilePath) = False Then
                             swMain = New StreamWriter(FilePath)
@@ -35,9 +35,9 @@ Public Class TextStream
                         End If
                     End If
                     srMain = New StreamReader(FilePath)
-                Case FileSystemObject.pIOMode.ForWriting
+                Case FileSystemObject.IOMode.ForWriting
                     swMain = New StreamWriter(FilePath, True)
-                Case FileSystemObject.pIOMode.ForAppending
+                Case FileSystemObject.IOMode.ForAppending
                     swMain = New StreamWriter(FilePath, False)
                 Case Else
                     Throw New Exception("Invalid IOMode " & IOMode.ToString)
@@ -52,7 +52,7 @@ Public Class TextStream
         Get
             Try
                 Select Case menmIOMode
-                    Case FileSystemObject.pIOMode.ForReading
+                    Case FileSystemObject.IOMode.ForReading
                         Return srMain.EndOfStream
                     Case Else
                         Return Nothing
@@ -67,7 +67,7 @@ Public Class TextStream
     Public Sub Close()
         Try
             Select Case menmIOMode
-                Case FileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.IOMode.ForReading
                     srMain.Close()
                 Case Else
                     swMain.Close()
@@ -81,7 +81,7 @@ Public Class TextStream
     Public Function ReadAll() As String
         Try
             Select Case menmIOMode
-                Case FileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.IOMode.ForReading
                     Return srMain.ReadToEnd()
                 Case Else
                     Return ""
@@ -96,7 +96,7 @@ Public Class TextStream
     Public Function ReadLine() As String
         Try
             Select Case menmIOMode
-                Case FileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.IOMode.ForReading
                     Return srMain.ReadLine
                 Case Else
                     Return ""
@@ -112,7 +112,7 @@ Public Class TextStream
     Public Sub WriteLine(Text As String)
         Try
             Select Case menmIOMode
-                Case FileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.IOMode.ForReading
                 Case Else
                     swMain.WriteLine(Text)
             End Select
@@ -130,7 +130,7 @@ Public Class TextStream
     Public Sub Write(Text As String)
         Try
             Select Case menmIOMode
-                Case FileSystemObject.pIOMode.ForReading
+                Case FileSystemObject.IOMode.ForReading
                 Case Else
                     swMain.Write(Text)
             End Select
