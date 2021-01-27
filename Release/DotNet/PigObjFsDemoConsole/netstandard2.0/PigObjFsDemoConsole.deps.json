@@ -7,10 +7,10 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "PigObjFsDemoConsole/1.0.0": {
+      "PigObjFsDemoConsole/1.1.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
-          "PigObjFsLib": "1.2.1"
+          "PigObjFsLib": "1.2.3"
         },
         "runtime": {
           "PigObjFsDemoConsole.dll": {}
@@ -22,18 +22,18 @@
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
-      "PigObjFsLib/1.2.1": {
+      "PigObjFsLib/1.2.3": {
         "runtime": {
           "lib/netstandard2.0/PigObjFsLib.dll": {
-            "assemblyVersion": "1.2.1.0",
-            "fileVersion": "1.2.1.0"
+            "assemblyVersion": "1.2.3.0",
+            "fileVersion": "1.2.3.0"
           }
         }
       }
     }
   },
   "libraries": {
-    "PigObjFsDemoConsole/1.0.0": {
+    "PigObjFsDemoConsole/1.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -52,12 +52,12 @@
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
-    "PigObjFsLib/1.2.1": {
+    "PigObjFsLib/1.2.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-8FHbUWbja+eIEvQySeFxeHFCG6GBSu0QiBY8ZXn941M+DS1+mTSJBZR0HwYRGTeox4oKVops2F1X+PABz122sw==",
-      "path": "pigobjfslib/1.2.1",
-      "hashPath": "pigobjfslib.1.2.1.nupkg.sha512"
+      "sha512": "sha512-iE6qXjUlnTKpVh14D9vQeemytRJC0OOolJtevZPNtTBgWwQKujs0gxG+zOQ9LqVcQqyz0oN8fYRmcmfniE80UQ==",
+      "path": "pigobjfslib/1.2.3",
+      "hashPath": "pigobjfslib.1.2.3.nupkg.sha512"
     }
   }
 }
