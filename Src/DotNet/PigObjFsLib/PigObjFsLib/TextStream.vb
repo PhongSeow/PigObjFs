@@ -4,7 +4,7 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.TextStream of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.2
+'* Version: 1.0.3
 '* Create Time: 30/12/2020
 '* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
 '* 1.0.3 23/1/2021   pTextStream rename to TextStream

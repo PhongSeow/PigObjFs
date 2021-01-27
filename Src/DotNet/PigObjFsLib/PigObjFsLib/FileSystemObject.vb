@@ -1,20 +1,21 @@
 ﻿'**********************************
-'* Name: pFileSystemObject
+'* Name: FileSystemObject
 '* Author: Seow Phong
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.FileSystemObject of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.3
+'* Version: 1.0.5
 '* Create Time: 31/12/2020
 '* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
 '* 1.0.3 23/1/2021   pFileSystemObject rename to FileSystemObject
+'* 1.0.4 26/1/2021   pIOMode rename to IOMode
+'* 1.0.5 27/1/2021   Add AppPath,AppTitle,IsWindows,OsCrLf,OsPathSep
 '**********************************
 Imports System.IO
 Public Class FileSystemObject
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.0.3"
+    Private Const CLS_VERSION As String = "1.0.5"
 
-    Private Shadows AppTitle As String
 
     Public Enum IOMode
         ForAppending = 8
@@ -105,5 +106,35 @@ Public Class FileSystemObject
             Return Nothing
         End Try
     End Function
+
+    Public Shadows ReadOnly Property AppPath() As String
+        Get
+            Return MyBase.AppPath
+        End Get
+    End Property
+
+    Public Shadows ReadOnly Property AppTitle() As String
+        Get
+            Return MyBase.AppTitle
+        End Get
+    End Property
+
+    Public Shadows ReadOnly Property IsWindows() As Boolean
+        Get
+            Return MyBase.IsWindows
+        End Get
+    End Property
+
+    Public Shadows ReadOnly Property OsCrLf() As String
+        Get
+            Return MyBase.OsCrLf
+        End Get
+    End Property
+
+    Public Shadows ReadOnly Property OsPathSep() As String
+        Get
+            Return MyBase.OsPathSep
+        End Get
+    End Property
 
 End Class

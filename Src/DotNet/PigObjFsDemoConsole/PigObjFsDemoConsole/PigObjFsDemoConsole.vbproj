@@ -1,44 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <RootNamespace>PigObjFsDemoConsole</RootNamespace>
-    <TargetFrameworks>net45;net40;net5.0;netcoreapp3.1;netstandard2.0;</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Seow Phong</Authors>
-    <Company>Seow Phong Studio</Company>
-    <Product>PigObjFs Demo Console</Product>
-    <Copyright>Copyright (c) 2021 Seow Phong</Copyright>
-    <PackageLicenseFile></PackageLicenseFile>
-    <PackageProjectUrl>https://en.seowphong.com/oss/PigObjFs/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/PhongSeow/PigObjFs</RepositoryUrl>
-    <PackageTags>Microsoft Scripting Runtime PigObjFsLib VB6 VB.net library File FileSystemObject Folder TextStream</PackageTags>
-    <Description>Demo program for PigObjFsLib</Description>
-    <Version>1.1.1</Version>
-    <PackageReleaseNotes>Function is changed to the writing of class.</PackageReleaseNotes>
-	<BuildOutputTargetFolder>tools</BuildOutputTargetFolder>
-	<RepositoryType>Git</RepositoryType>
-	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <TargetFrameworks>net45;net40;net5.0;netcoreapp3.1;netstandard2.0;</TargetFrameworks>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <Authors>Seow Phong</Authors>
+	  <Company>Seow Phong Studio</Company>
+	  <Product>PigObjFs Demo Console</Product>
+	  <Description>Demo console program library for PigObjFsLib.
+</Description>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <PackageProjectUrl>https://en.seowphong.com/oss/PigObjFs/</PackageProjectUrl>
+	  <RepositoryType>GIT</RepositoryType>
+	  <RepositoryUrl>https://github.com/PhongSeow/PigObjFs/tree/master/Src/DotNet/PigObjFsDemoConsole</RepositoryUrl>
+	  <Version>1.1.0</Version>
+	  <Copyright>Copyright (c) 2021 Seow Phong</Copyright>
+	  <PackageTags>Microsoft Scripting Runtime VB6 VB.net library File FileSystemObject Folder TextStream Windows Linux</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PigObjFsLib" Version="1.2.1" />
+    <Folder Include="My Project\" />
   </ItemGroup>
-    <Target Name="IncludeAllDependencies" BeforeTargets="_GetPackageFiles">
-	    <ItemGroup>
-		    <None Include="Assets\build\Package.props" Pack="True" PackagePath="build\$(PackageId).props" />
-		    <None Include="Assets\build\Package.targets" Pack="True" PackagePath="build\$(PackageId).targets" />
-		    <None Include="Assets\buildMultiTargeting\Package.props" Pack="True" PackagePath="buildMultiTargeting\$(PackageId).props" />
-		    <None Include="Assets\buildMultiTargeting\Package.targets" Pack="True" PackagePath="buildMultiTargeting\$(PackageId).targets" />
-		    <None Include="Assets\src\**" Pack="True" PackagePath="src" />
-	    </ItemGroup>
-    </Target>
 
-	<ItemGroup>
-		<Folder Include="Assets\build\" />
-		<Folder Include="Assets\buildMultiTargeting\" />
-		<Folder Include="Assets\tools\" />
-		<Folder Include="My Project\" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PigObjFsLib" Version="1.2.3" />
+  </ItemGroup>
 
 </Project>
