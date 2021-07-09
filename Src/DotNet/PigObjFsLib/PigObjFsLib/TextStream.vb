@@ -4,15 +4,16 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.TextStream of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.3
+'* Version: 1.0.4
 '* Create Time: 30/12/2020
 '* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
 '* 1.0.3 23/1/2021   pTextStream rename to TextStream
+'* 1.0.4 23/1/2021   Modify Init
 '**********************************
 Imports System.IO
 Public Class TextStream
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.0.3"
+    Private Const CLS_VERSION As String = "1.0.4"
 
     Private menmIOMode As FileSystemObject.IOMode
 
@@ -36,9 +37,9 @@ Public Class TextStream
                     End If
                     srMain = New StreamReader(FilePath)
                 Case FileSystemObject.IOMode.ForWriting
-                    swMain = New StreamWriter(FilePath, True)
-                Case FileSystemObject.IOMode.ForAppending
                     swMain = New StreamWriter(FilePath, False)
+                Case FileSystemObject.IOMode.ForAppending
+                    swMain = New StreamWriter(FilePath, True)
                 Case Else
                     Throw New Exception("Invalid IOMode " & IOMode.ToString)
             End Select
