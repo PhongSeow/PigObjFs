@@ -6,36 +6,36 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "PigObjFsDemoConsole/1.1.0": {
+      "PigObjFsDemoConsole/1.2.0": {
         "dependencies": {
-          "PigObjFsLib": "1.2.3"
+          "PigObjFsLib": "1.2.3.16"
         },
         "runtime": {
           "PigObjFsDemoConsole.dll": {}
         }
       },
-      "PigObjFsLib/1.2.3": {
+      "PigObjFsLib/1.2.3.16": {
         "runtime": {
           "lib/net5.0/PigObjFsLib.dll": {
-            "assemblyVersion": "1.2.3.0",
-            "fileVersion": "1.2.3.0"
+            "assemblyVersion": "1.2.3.16",
+            "fileVersion": "1.2.3.16"
           }
         }
       }
     }
   },
   "libraries": {
-    "PigObjFsDemoConsole/1.1.0": {
+    "PigObjFsDemoConsole/1.2.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "PigObjFsLib/1.2.3": {
+    "PigObjFsLib/1.2.3.16": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-iE6qXjUlnTKpVh14D9vQeemytRJC0OOolJtevZPNtTBgWwQKujs0gxG+zOQ9LqVcQqyz0oN8fYRmcmfniE80UQ==",
-      "path": "pigobjfslib/1.2.3",
-      "hashPath": "pigobjfslib.1.2.3.nupkg.sha512"
+      "sha512": "sha512-vZPMfD1oaSw7Oh8i4B68Ehpew9M6VQ/VepzMflA1KUmnXVehOVlDS/wGlUFYi6DpCSSLMZT1vHQ3MnHQtJ+iIQ==",
+      "path": "pigobjfslib/1.2.3.16",
+      "hashPath": "pigobjfslib.1.2.3.16.nupkg.sha512"
     }
   }
 }
