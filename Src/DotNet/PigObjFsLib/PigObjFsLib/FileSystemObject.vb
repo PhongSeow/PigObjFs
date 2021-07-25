@@ -4,17 +4,18 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.FileSystemObject of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.5
+'* Version: 1.0.6
 '* Create Time: 31/12/2020
 '* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
 '* 1.0.3 23/1/2021   pFileSystemObject rename to FileSystemObject
 '* 1.0.4 26/1/2021   pIOMode rename to IOMode
 '* 1.0.5 27/1/2021   Add AppPath,AppTitle,IsWindows,OsCrLf,OsPathSep
+'* 1.0.6 25/7/2021   Modify OpenTextFile
 '**********************************
 Imports System.IO
 Public Class FileSystemObject
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.0.5"
+    Private Const CLS_VERSION As String = "1.0.6"
 
 
     Public Enum IOMode
@@ -97,12 +98,17 @@ Public Class FileSystemObject
     End Function
 
     Public Function OpenTextFile(FilePath As String, IOMode As IOMode, Optional Create As Boolean = False) As TextStream
+        Const SUB_NAME As String = "OpenTextFile"
+        Dim strStepName As String = ""
         Try
             OpenTextFile = New TextStream
+            strStepName = "Init"
+            Me.PrintDebugLog(SUB_NAME, strStepName, FilePath)
             OpenTextFile.Init(FilePath, IOMode, Create)
             If OpenTextFile.LastErr <> "" Then Throw New Exception(OpenTextFile.LastErr)
+            Me.ClearErr()
         Catch ex As Exception
-            Me.SetSubErrInf("OpenTextFile", ex)
+            Me.SetSubErrInf(SUB_NAME, strStepName, ex)
             Return Nothing
         End Try
     End Function

@@ -4,16 +4,17 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.TextStream of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.4
+'* Version: 1.0.5
 '* Create Time: 30/12/2020
 '* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
 '* 1.0.3 23/1/2021   pTextStream rename to TextStream
 '* 1.0.4 23/1/2021   Modify Init
+'* 1.0.5 25/7/2021   Modify Init
 '**********************************
 Imports System.IO
 Public Class TextStream
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.0.4"
+    Private Const CLS_VERSION As String = "1.0.5"
 
     Private menmIOMode As FileSystemObject.IOMode
 
@@ -25,6 +26,8 @@ Public Class TextStream
     End Sub
 
     Friend Sub Init(FilePath As String, IOMode As FileSystemObject.IOMode, Optional Create As Boolean = False)
+        Const SUB_NAME As String = "Init"
+        Dim strStepName As String = ""
         Try
             menmIOMode = IOMode
             Select Case menmIOMode
@@ -45,7 +48,8 @@ Public Class TextStream
             End Select
             Me.ClearErr()
         Catch ex As Exception
-            Me.SetSubErrInf("Init", ex)
+            strStepName &= "(" & FilePath & ")"
+            Me.SetSubErrInf(SUB_NAME, strStepName, ex)
         End Try
     End Sub
 
