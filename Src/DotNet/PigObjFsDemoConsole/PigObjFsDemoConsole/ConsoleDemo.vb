@@ -1,15 +1,16 @@
 ﻿Imports PigObjFsLib
 
 Public Class ConsoleDemo
-    Private oFS As New FileSystemObject
 
+    Private moFS As New FileSystemObject
     Public Sub Main()
+        moFS.OpenDebug(True)
         Do While True
             Console.WriteLine("*******************")
             Console.WriteLine("Main menu")
             Console.WriteLine("*******************")
             Console.WriteLine("Press Q to Exit")
-            Console.WriteLine("Press A to FileSystemObject")
+            Console.WriteLine("Press A to pFileSystemObject")
             Console.WriteLine("Press B to TextStream")
             Console.WriteLine("*******************")
             Select Case Console.ReadKey().Key
@@ -18,7 +19,7 @@ Public Class ConsoleDemo
                 Case ConsoleKey.A
                     Do While True
                         Console.WriteLine("*******************")
-                        Console.WriteLine("Menu FileSystemObject")
+                        Console.WriteLine("Menu pFileSystemObject")
                         Console.WriteLine("*******************")
                         Console.WriteLine("Press Q to Up")
                         Console.WriteLine("Press A to GetFile")
@@ -38,7 +39,7 @@ Public Class ConsoleDemo
                                 If strFilePath = "" Then
                                     strFilePath = GetCurrDirFristFile()
                                 End If
-                                Dim oFile As File = oFS.GetFile(strFilePath)
+                                Dim oFile As File = moFS.GetFile(strFilePath)
                                 Console.WriteLine("DateCreated: " & oFile.DateCreated)
                                 Console.WriteLine("DateLastModified: " & oFile.DateLastModified)
                                 Console.WriteLine("Name: " & oFile.Name)
@@ -47,12 +48,12 @@ Public Class ConsoleDemo
                             Case ConsoleKey.B
                                 Dim strFolderPath As String
                                 Console.WriteLine("#################")
-                                Console.WriteLine("Enter the file folder, such as " & oFS.AppPath)
+                                Console.WriteLine("Enter the file folder, such as " & moFS.AppPath)
                                 strFolderPath = Console.ReadLine()
                                 If strFolderPath = "" Then
-                                    strFolderPath = oFS.AppPath
+                                    strFolderPath = moFS.AppPath
                                 End If
-                                Dim oFolder As Folder = oFS.GetFolder(strFolderPath)
+                                Dim oFolder As Folder = moFS.GetFolder(strFolderPath)
                                 Console.WriteLine("DateCreated: " & oFolder.DateCreated)
                                 Console.WriteLine("DateLastModified: " & oFolder.DateLastModified)
                                 Console.WriteLine("Name: " & oFolder.Name)
@@ -66,35 +67,35 @@ Public Class ConsoleDemo
                                 If strFilePath = "" Then
                                     strFilePath = GetCurrDirFristFile()
                                 End If
-                                Console.WriteLine("FileExists: " & oFS.FileExists(strFilePath))
+                                Console.WriteLine("FileExists: " & moFS.FileExists(strFilePath))
                                 Console.WriteLine("#################")
                             Case ConsoleKey.D
                                 Dim strFolderPath As String
                                 Console.WriteLine("#################")
-                                Console.WriteLine("Enter the file folder, such as " & oFS.AppPath)
+                                Console.WriteLine("Enter the file folder, such as " & moFS.AppPath)
                                 strFolderPath = Console.ReadLine()
                                 If strFolderPath = "" Then
-                                    strFolderPath = oFS.AppPath
+                                    strFolderPath = moFS.AppPath
                                 End If
-                                Console.WriteLine("FolderExists: " & oFS.FolderExists(strFolderPath))
+                                Console.WriteLine("FolderExists: " & moFS.FolderExists(strFolderPath))
                                 Console.WriteLine("#################")
                             Case ConsoleKey.E
                                 Dim strFolderPath As String, strDefaPath As String
                                 Console.WriteLine("#################")
-                                With oFS
-                                    strDefaPath = .AppPath & "a" & .OsPathSep & "b"
+                                With moFS
+                                    strDefaPath = .AppPath & .OsPathSep & "a" & .OsPathSep & "b"
                                     Console.WriteLine("Enter the file folder, such as " & strDefaPath)
                                 End With
                                 strFolderPath = Console.ReadLine()
                                 If strFolderPath = "" Then
                                     strFolderPath = strDefaPath
                                 End If
-                                oFS.CreateFolder(strFolderPath)
+                                moFS.CreateFolder(strFolderPath)
                                 Console.Write("CreateFolder: ")
-                                If oFS.LastErr = "" Then
+                                If moFS.LastErr = "" Then
                                     Console.WriteLine("OK")
                                 Else
-                                    Console.WriteLine(oFS.LastErr)
+                                    Console.WriteLine(moFS.LastErr)
                                 End If
                                 Console.WriteLine("#################")
                         End Select
@@ -119,14 +120,14 @@ Public Class ConsoleDemo
                                 If strFilePath = "" Then
                                     strFilePath = GetCurrDirFristFile()
                                 End If
-                                If oFS.FileExists(strFilePath) = False Then
+                                If moFS.FileExists(strFilePath) = False Then
                                     Console.WriteLine(strFilePath & " not found.")
                                 Else
                                     Dim oTextStream As TextStream
                                     Console.WriteLine("OpenTextFile(" & strFilePath & ")...")
-                                    oTextStream = oFS.OpenTextFile(strFilePath, FileSystemObject.IOMode.ForReading, False)
-                                    If oFS.LastErr <> "" Then
-                                        Console.WriteLine(oFS.LastErr)
+                                    oTextStream = moFS.OpenTextFile(strFilePath, FileSystemObject.IOMode.ForReading, False)
+                                    If moFS.LastErr <> "" Then
+                                        Console.WriteLine(moFS.LastErr)
                                     Else
                                         Do While Not oTextStream.AtEndOfStream
                                             Console.WriteLine(oTextStream.ReadLine)
@@ -138,10 +139,10 @@ Public Class ConsoleDemo
                             Case ConsoleKey.B
                                 Dim strFilePath As String, strDefaFile As String
                                 Console.Write("Enter the file path, such as ")
-                                If oFS.IsWindows = True Then
+                                If moFS.IsWindows = True Then
                                     strDefaFile = "C:\Temp\TestPigFsDemo.txt"
                                 Else
-                                    strDefaFile = "/Temp/TestPigFsDemo.txt"
+                                    strDefaFile = "/tmp/TestPigFsDemo.txt"
                                 End If
                                 Console.WriteLine(strDefaFile)
                                 strFilePath = Console.ReadLine()
@@ -150,9 +151,9 @@ Public Class ConsoleDemo
                                 End If
                                 Dim oTextStream As TextStream
                                 Console.WriteLine("OpenTextFile(" & strFilePath & ")...")
-                                oTextStream = oFS.OpenTextFile(strFilePath, FileSystemObject.IOMode.ForWriting, True)
-                                If oFS.LastErr <> "" Then
-                                    Console.WriteLine(oFS.LastErr)
+                                oTextStream = moFS.OpenTextFile(strFilePath, FileSystemObject.IOMode.ForWriting, True)
+                                If moFS.LastErr <> "" Then
+                                    Console.WriteLine(moFS.LastErr)
                                 Else
                                     oTextStream.WriteLine("WriteLine")
                                     oTextStream.WriteBlankLines(2)
@@ -162,17 +163,12 @@ Public Class ConsoleDemo
                         End Select
                     Loop
             End Select
-
         Loop
     End Sub
 
-    Protected Overrides Sub Finalize()
-        MyBase.Finalize()
-    End Sub
-
-    Private Function GetCurrDirFristFile() As String
+    Public Function GetCurrDirFristFile() As String
         Dim oFolder As Folder
-        oFolder = oFS.GetFolder(oFS.AppPath)
+        oFolder = moFS.GetFolder(moFS.AppPath)
         GetCurrDirFristFile = ""
         For Each objFile In oFolder.Files
             If Not objFile Is Nothing Then
