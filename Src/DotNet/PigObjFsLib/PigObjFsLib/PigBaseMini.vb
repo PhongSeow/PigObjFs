@@ -312,8 +312,8 @@ Public Class PigBaseMini
             Dim strLogFilePath As String = Me.AppTitle
             If LogFileDir = "" Then LogFileDir = Me.AppPath
             Dim dteNow As DateTime = DateTime.Now
-            If IsIncDate = True Then strLogFilePath &= dteNow.ToString("yyyyMMdd") & ".log"
-            strLogFilePath = LogFileDir & Me.OsPathSep & strLogFilePath
+            If IsIncDate = True Then strLogFilePath &= dteNow.ToString("yyyyMMdd")
+            strLogFilePath = LogFileDir & Me.OsPathSep & strLogFilePath & ".log"
             Me.SetDebug(strLogFilePath)
             Me.ClearErr()
         Catch ex As Exception

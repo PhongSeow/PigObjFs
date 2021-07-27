@@ -9,19 +9,19 @@
     <Description>A library that can support multiple .net frameworks, and its interface is similar to Microsoft Scripting Runtime of VB6,easy to upgrade VB6 code to VB.NET, can run at windows and linux.</Description>
     <PackageLicenseFile></PackageLicenseFile>
     <PackageProjectUrl>https://en.seowphong.com/oss/PigObjFs/</PackageProjectUrl>
-    <PackageReleaseNotes>Optimize debugging function.</PackageReleaseNotes>
+    <PackageReleaseNotes>Optimize debugging function and fix bugs.</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/PhongSeow/PigObjFs/tree/master/Src/DotNet/PigObjFsLib</RepositoryUrl>
     <PackageTags>Microsoft Scripting Runtime VB6 VB.net library File FileSystemObject Folder TextStream Windows Linux</PackageTags>
     <NeutralLanguage />
     <Copyright>Copyright (c) 2020-2021 Seow Phong</Copyright>
-    <Version>1.2.5.9</Version>
+    <Version>1.2.5.12</Version>
     <PackageIcon>SeowPhongLogo.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>GIT</RepositoryType>
-    <AssemblyVersion>1.2.5.9</AssemblyVersion>
-    <FileVersion>1.2.5.9</FileVersion>
+    <AssemblyVersion>1.2.5.12</AssemblyVersion>
+    <FileVersion>1.2.5.12</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
