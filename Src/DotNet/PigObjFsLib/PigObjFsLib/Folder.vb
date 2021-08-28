@@ -4,14 +4,15 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.Folder of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.2
+'* Version: 1.1.2
 '* Create Time: 31/12/2020
 '* 1.0.2 23/1/2021   pFolder rename to Folder
+'* 1.1 28/8/2021   Modify mGetSubDirList
 '**********************************
 Imports System.IO
 Public Class Folder
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.0.2"
+    Private Const CLS_VERSION As String = "1.1.2"
 
     Public Obj As DirectoryInfo
 
@@ -65,15 +66,28 @@ Public Class Folder
 
     Private Function mGetSubDirList(ByRef oDir As DirectoryInfo, ByRef DirArray As String(), ByRef Ret As String) As String
         Try
-            If oDir.GetDirectories.LongCount > 0 Then
+            Dim lngCount As Long
+#If NET40_OR_GREATER Or NETCOREAPP Then
+            lngCount = oDir.GetDirectories.LongCount
+#Else
+            lngCount = oDir.GetDirectories.Length
+#End If
+
+            If lngCount > 0 Then
                 For Each oSubDir In oDir.GetDirectories
                     Dim strRet As String = ""
                     strRet = mGetSubDirList(oSubDir, DirArray, Ret)
                     If strRet <> "OK" Then
                         Ret &= oSubDir.FullName & ":Err=" & strRet & vbCrLf
                     Else
-                        ReDim Preserve DirArray(DirArray.LongCount)
-                        DirArray(DirArray.LongCount - 1) = oSubDir.FullName
+                        Dim lngDirCount As Long
+#If NET40_OR_GREATER Or NETCOREAPP Then
+                        lngDirCount = DirArray.LongCount
+#Else
+                        lngDirCount = DirArray.Length
+#End If
+                        ReDim Preserve DirArray(lngDirCount)
+                        DirArray(lngDirCount - 1) = oSubDir.FullName
                     End If
                 Next
             End If
