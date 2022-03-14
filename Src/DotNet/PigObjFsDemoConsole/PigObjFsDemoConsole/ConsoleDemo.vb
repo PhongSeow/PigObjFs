@@ -1,9 +1,23 @@
-﻿Imports PigObjFsLib
+﻿'**********************************
+'* Name: ConsoleDemo
+'* Author: Seow Phong
+'* License: Copyright (c) 2021-2022 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
+'* Describe: 
+'* Home Url: https://www.seowphong.com or https://en.seowphong.com
+'* Version: 1.2
+'* Create Time: 31/12/202
+'* 1.1.8 1/3/2022   Modify New FileSystemObject
+'* 1.2.6 13/3/2022   Add TextStreamAsc
+'**********************************
+
+Imports PigObjFsLib
 
 Public Class ConsoleDemo
 
-    Private moFS As New FileSystemObject
+    Private moFS As FileSystemObject
+
     Public Sub Main()
+        moFS = New FileSystemObject()
         moFS.OpenDebug(True)
         Do While True
             Console.WriteLine("*******************")
@@ -12,8 +26,11 @@ Public Class ConsoleDemo
             Console.WriteLine("Press Q to Exit")
             Console.WriteLine("Press A to pFileSystemObject")
             Console.WriteLine("Press B to TextStream")
+#If NETFRAMEWORK Then
+            Console.WriteLine("Press C to TextStreamAsc")
+#End If
             Console.WriteLine("*******************")
-            Select Case Console.ReadKey().Key
+            Select Case Console.ReadKey(True).Key
                 Case ConsoleKey.Q
                     Exit Do
                 Case ConsoleKey.A
@@ -28,7 +45,7 @@ Public Class ConsoleDemo
                         Console.WriteLine("Press D to FolderExists")
                         Console.WriteLine("Press E to CreateFolder")
                         Console.WriteLine("*******************")
-                        Select Case Console.ReadKey().Key
+                        Select Case Console.ReadKey(True).Key
                             Case ConsoleKey.Q
                                 Exit Do
                             Case ConsoleKey.A
@@ -130,7 +147,8 @@ Public Class ConsoleDemo
                                         Console.WriteLine(moFS.LastErr)
                                     Else
                                         Do While Not oTextStream.AtEndOfStream
-                                            Console.WriteLine(oTextStream.ReadLine)
+                                            Dim strLine As String = oTextStream.ReadLine
+                                            Console.WriteLine(strLine)
                                         Loop
                                         oTextStream.Close()
                                     End If
@@ -162,6 +180,71 @@ Public Class ConsoleDemo
                                 End If
                         End Select
                     Loop
+#If NETFRAMEWORK Then
+                Case ConsoleKey.C
+                    Do While True
+                        Console.WriteLine("*******************")
+                        Console.WriteLine("Menu TextStreamAsc")
+                        Console.WriteLine("*******************")
+                        Console.WriteLine("Press Q to Up")
+                        Console.WriteLine("Press A to Read File")
+                        Console.WriteLine("Press B to Write File")
+                        Console.WriteLine("*******************")
+                        Select Case Console.ReadKey().Key
+                            Case ConsoleKey.Q
+                                Exit Do
+                            Case ConsoleKey.A
+                                Dim strFilePath As String
+                                Console.WriteLine("#################")
+                                Console.WriteLine("Enter the file path, such as " & GetCurrDirFristFile())
+                                strFilePath = Console.ReadLine()
+                                If strFilePath = "" Then
+                                    strFilePath = GetCurrDirFristFile()
+                                End If
+                                If moFS.FileExists(strFilePath) = False Then
+                                    Console.WriteLine(strFilePath & " not found.")
+                                Else
+                                    Dim oTextStream As TextStreamAsc
+                                    Console.WriteLine("OpenTextFile(" & strFilePath & ")...")
+                                    oTextStream = moFS.OpenTextFileAsc(strFilePath, FileSystemObject.IOMode.ForReading, False)
+                                    If moFS.LastErr <> "" Then
+                                        Console.WriteLine(moFS.LastErr)
+                                    Else
+                                        Do While Not oTextStream.AtEndOfStream
+                                            Dim strLine As String = oTextStream.ReadLine
+                                            Console.WriteLine(strLine)
+                                        Loop
+                                        oTextStream.Close()
+                                    End If
+                                End If
+                                Console.WriteLine("#################")
+                            Case ConsoleKey.B
+                                Dim strFilePath As String, strDefaFile As String
+                                Console.Write("Enter the file path, such as ")
+                                If moFS.IsWindows = True Then
+                                    strDefaFile = "C:\Temp\TestPigFsDemo.txt"
+                                Else
+                                    strDefaFile = "/tmp/TestPigFsDemo.txt"
+                                End If
+                                Console.WriteLine(strDefaFile)
+                                strFilePath = Console.ReadLine()
+                                If strFilePath = "" Then
+                                    strFilePath = strDefaFile
+                                End If
+                                Dim oTextStream As TextStreamAsc
+                                Console.WriteLine("OpenTextFile(" & strFilePath & ")...")
+                                oTextStream = moFS.OpenTextFileAsc(strFilePath, FileSystemObject.IOMode.ForWriting, True)
+                                If moFS.LastErr <> "" Then
+                                    Console.WriteLine(moFS.LastErr)
+                                Else
+                                    oTextStream.WriteLine("WriteLine")
+                                    oTextStream.WriteBlankLines(2)
+                                    oTextStream.Close()
+                                    Console.WriteLine("OK")
+                                End If
+                        End Select
+                    Loop
+#End If
             End Select
         Loop
     End Sub
