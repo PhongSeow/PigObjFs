@@ -4,19 +4,23 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.FileSystemObject of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.6
+'* Version: 1.1
 '* Create Time: 31/12/2020
 '* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
 '* 1.0.3 23/1/2021   pFileSystemObject rename to FileSystemObject
 '* 1.0.4 26/1/2021   pIOMode rename to IOMode
 '* 1.0.5 27/1/2021   Add AppPath,AppTitle,IsWindows,OsCrLf,OsPathSep
 '* 1.0.6 25/7/2021   Modify OpenTextFile
+'* 1.1 13/3/2021   Add Obj
 '**********************************
 Imports System.IO
 Public Class FileSystemObject
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.0.6"
+    Private Const CLS_VERSION As String = "1.1.2"
 
+#If NETFRAMEWORK Then
+    Friend Obj As Object
+#End If
 
     Public Enum IOMode
         ForAppending = 8
@@ -106,6 +110,30 @@ Public Class FileSystemObject
             Me.PrintDebugLog(SUB_NAME, strStepName, FilePath)
             OpenTextFile.Init(FilePath, IOMode, Create)
             If OpenTextFile.LastErr <> "" Then Throw New Exception(OpenTextFile.LastErr)
+            Me.ClearErr()
+        Catch ex As Exception
+            Me.SetSubErrInf(SUB_NAME, strStepName, ex)
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function OpenTextFileAsc(FilePath As String, IOMode As IOMode, Optional Create As Boolean = False) As TextStreamAsc
+        Const SUB_NAME As String = "OpenTextFileAsc"
+        Dim strStepName As String = ""
+        Try
+#If NETFRAMEWORK Then
+            If Me.Obj Is Nothing Then
+                strStepName = "CreateObject"
+                Me.Obj = CreateObject("Scripting.FileSystemObject")
+            End If
+            strStepName = "New TextStreamAsc"
+            OpenTextFileAsc = New TextStreamAsc
+            If OpenTextFileAsc.LastErr <> "" Then Throw New Exception(OpenTextFileAsc.LastErr)
+            strStepName = "OpenTextFile"
+            OpenTextFileAsc.Obj = Me.Obj.OpenTextFile(FilePath, IOMode, Create)
+#Else
+            Throw New Exception("This function can only be run under NETFRAMEWORK")
+#End If
             Me.ClearErr()
         Catch ex As Exception
             Me.SetSubErrInf(SUB_NAME, strStepName, ex)

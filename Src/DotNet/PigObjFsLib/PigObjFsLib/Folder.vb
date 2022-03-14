@@ -4,17 +4,18 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.Folder of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.1.2
+'* Version: 1.2
 '* Create Time: 31/12/2020
 '* 1.0.2 23/1/2021   pFolder rename to Folder
 '* 1.1 28/8/2021   Modify mGetSubDirList
+'* 1.2 13/3/2021   Modify Obj
 '**********************************
 Imports System.IO
 Public Class Folder
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.1.2"
+    Private Const CLS_VERSION As String = "1.2.2"
 
-    Public Obj As DirectoryInfo
+    Friend Obj As DirectoryInfo
 
     Public Sub New()
         MyBase.New(CLS_VERSION)

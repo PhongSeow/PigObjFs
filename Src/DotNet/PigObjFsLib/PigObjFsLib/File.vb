@@ -4,17 +4,18 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.File of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.0.3
+'* Version: 1.1
 '* Create Time: 30/12/2020
 '* 1.0.2 15/1/2021   Err.Raise change to Throw New Exception
 '* 1.0.3 23/1/2021   pFile rename to File
+'* 1.1 13/3/2021   Modify Obj
 '**********************************
 Imports System.IO
 Public Class File
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.0.3"
+    Private Const CLS_VERSION As String = "1.1.2"
 
-    Public Obj As FileInfo
+    Friend Obj As FileInfo
 
     Public Sub New()
         MyBase.New(CLS_VERSION)
