@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <RootNamespace>PigObjFsDemoConsole</RootNamespace>
-	  <TargetFrameworks>net20;net30;net45;net40;net5.0;netcoreapp3.1;</TargetFrameworks>
+	  <TargetFrameworks>net20;net30;net45;net40;net5.0;netcoreapp3.1;net6.0;</TargetFrameworks>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <Authors>Seow Phong</Authors>
 	  <Company>Seow Phong Studio</Company>
@@ -13,10 +13,10 @@
 	  <PackageProjectUrl>https://en.seowphong.com/oss/PigObjFs/</PackageProjectUrl>
 	  <RepositoryType>GIT</RepositoryType>
 	  <RepositoryUrl>https://github.com/PhongSeow/PigObjFs/tree/master/Src/DotNet/PigObjFsDemoConsole</RepositoryUrl>
-	  <Version>2.2.8</Version>
-	  <Copyright>Copyright (c) 2021 Seow Phong</Copyright>
+	  <Version>2.2.18</Version>
+	  <Copyright>Copyright (c) 2021-2022 Seow Phong</Copyright>
 	  <PackageTags>Microsoft Scripting Runtime VB6 VB.net library File FileSystemObject Folder TextStream Windows Linux</PackageTags>
-	  <PackageReleaseNotes>Add functionto solve .Net reading ASCII files with Chinese garbled code.</PackageReleaseNotes>
+	  <PackageReleaseNotes>Reference the latest class library and add support .net 6.0</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PigObjFsLib" Version="2.0.8" />
+    <PackageReference Include="PigObjFsLib" Version="2.0.18" />
   </ItemGroup>
 
 </Project>

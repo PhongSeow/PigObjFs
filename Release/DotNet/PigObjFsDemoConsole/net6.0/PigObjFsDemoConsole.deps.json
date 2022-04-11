@@ -1,11 +1,11 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v3.1",
+    "name": ".NETCoreApp,Version=v6.0",
     "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    ".NETCoreApp,Version=v6.0": {
       "PigObjFsDemoConsole/2.2.18": {
         "dependencies": {
           "PigObjFsLib": "2.0.18"
@@ -16,7 +16,7 @@
       },
       "PigObjFsLib/2.0.18": {
         "runtime": {
-          "lib/netcoreapp3.1/PigObjFsLib.dll": {
+          "lib/net6.0/PigObjFsLib.dll": {
             "assemblyVersion": "2.0.18.0",
             "fileVersion": "2.0.18.0"
           }
