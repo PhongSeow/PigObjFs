@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <RootNamespace>PigObjFsLib</RootNamespace>
-    <TargetFrameworks>net20;net30;net45;net40;net5.0;net6.0;netcoreapp3.1;</TargetFrameworks>
+    <TargetFrameworks>net20;net30;net48;net5.0;net6.0;netcoreapp3.1;</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.18</Version>
+    <Version>2.0.28</Version>
     <Authors>Seow Phong</Authors>
     <Company>Seow Phong Studio</Company>
     <Description>A library that can support multiple .net frameworks, and its interface is similar to Microsoft Scripting Runtime of VB6,easy to upgrade VB6 code to VB.NET, can run at windows and linux.
@@ -17,7 +17,7 @@ Can solve .net reading ASCII files with Chinese garbled code.</Description>
     <RepositoryUrl>https://github.com/PhongSeow/PigObjFs/tree/master/Src/DotNet/PigObjFsLib</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>Microsoft Scripting Runtime VB6 VB.net library File FileSystemObject Folder TextStream Windows Linux</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>support .net 4.8</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
