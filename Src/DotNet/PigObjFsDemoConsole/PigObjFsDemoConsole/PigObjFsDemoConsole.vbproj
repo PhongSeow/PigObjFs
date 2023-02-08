@@ -13,18 +13,14 @@
 	  <PackageProjectUrl>https://en.seowphong.com/oss/PigObjFs/</PackageProjectUrl>
 	  <RepositoryType>GIT</RepositoryType>
 	  <RepositoryUrl>https://github.com/PhongSeow/PigObjFs/tree/master/Src/DotNet/PigObjFsDemoConsole</RepositoryUrl>
-	  <Version>2.2.30</Version>
-	  <Copyright>Copyright (c) 2021-2022 Seow Phong</Copyright>
+	  <Version>2.2.32</Version>
+	  <Copyright>Copyright (c) 2021-2023 Seow Phong</Copyright>
 	  <PackageTags>Microsoft Scripting Runtime VB6 VB.net library File FileSystemObject Folder TextStream Windows Linux</PackageTags>
 	  <PackageReleaseNotes>Reference the latest class library.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="My Project\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="PigObjFsLib" Version="2.0.30" />
+    <PackageReference Include="PigObjFsLib" Version="2.0.32" />
   </ItemGroup>
 
 </Project>
