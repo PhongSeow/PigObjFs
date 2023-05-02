@@ -4,16 +4,17 @@
 '* License: Copyright (c) 2020 Seow Phong, For more details, see the MIT LICENSE file included with this distribution.
 '* Describe: Amount to Scripting.Folder of VB6
 '* Home Url: https://www.seowphong.com or https://en.seowphong.com
-'* Version: 1.2
+'* Version: 1.3
 '* Create Time: 31/12/2020
 '* 1.0.2 23/1/2021   pFolder rename to Folder
 '* 1.1 28/8/2021   Modify mGetSubDirList
 '* 1.2 13/3/2021   Modify Obj
+'* 1.3 1/5/2023    Add FileCount
 '**********************************
 Imports System.IO
 Public Class Folder
     Inherits PigBaseMini
-    Private Const CLS_VERSION As String = "1.2.2"
+    Private Const CLS_VERSION As String = "1.3.2"
 
     Friend Obj As DirectoryInfo
 
@@ -120,6 +121,17 @@ Public Class Folder
             End Try
         End Get
     End Property
+
+    Public ReadOnly Property FileCount() As Integer
+        Get
+#If NET20 Or NET30 Then
+            Return Me.Files.Length
+#Else
+            Return Me.Files.Count
+#End If
+        End Get
+    End Property
+
 
     Public ReadOnly Property Files() As File()
         Get
